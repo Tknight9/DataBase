@@ -1,0 +1,24 @@
+Create Table Student(
+	Sno CHAR(9) PRIMARY Key,
+	Sname CHAR(20) Unique,
+	Ssex CHAR(2),
+	Sage Smallint,
+	Sdept CHAR(20)
+);
+
+Create Table Course(
+	Cno CHAR(4) PRIMARY Key,
+	Cname CHAR(40) Unique NOT NULL,
+	Cpno CHAR(4) NULL,
+	Ccredit Smallint NOT NULL,
+	Foreign Key(Cpno) References Course(Cno)
+);
+
+Create Table SC(
+	Sno CHAR(9),
+	Cno CHAR(4),
+	Grade Smallint,
+	Primary Key(Sno, Cno),
+	Foreign Key(Sno) References Student(Sno),
+	Foreign Key(Cno) References Course(Cno)
+);
